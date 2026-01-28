@@ -167,19 +167,6 @@
            letter-spacing: 2px; box-shadow: 0 0 20px var(--accent);
         }
 
-        @media (max-width: 768px) {
-       .nav-links {
-        display: flex;
-        flex-direction: row; /* Forces horizontal layout */
-        flex-wrap: nowrap;   /* Prevents links from dropping to the next line */
-        overflow-x: auto;    /* Adds the scroll feature */
-        -webkit-overflow-scrolling: touch; /* Makes scrolling smooth on iPhones */
-        gap: 15px;
-        padding: 10px 5px;
-        width: 100%;
-        justify-content: flex-start; /* Aligns them to the left to start the scroll */
-    }
-
     /* Optional: Hides the scrollbar for a cleaner "Apple-style" look */
     .nav-links::-webkit-scrollbar {
         display: none;
