@@ -203,25 +203,36 @@
         justify-content: center;
         gap: 10px;
        }
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-        /* 1. Stack the Navigation vertically */
-       .nav-links {
-        display: none; /* Usually, pros use a 'Hamburger Menu' here, but for now, we can simplify */
-        }
-        /* Ensure images never overflow the screen */
-        img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        }
-            
 
-        /* 2. Make the Profile Picture smaller for mobile */
-        .profile-pic {
-        width: 150px;
-        height: 150px;
+        /* --- MOBILE RESPONSIVENESS FIX --- */
+        @media (max-width: 768px) {
+        /* Instead of display: none, we make them stack */
+        .nav-links {
+        display: flex;
+        flex-direction: column; /* Stacks links vertically */
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0;
         }
+
+    /* Make the Projects grid a single column so cards aren't squashed */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        padding: 10px;
+    }
+
+    /* Adjust the header text so it doesn't overlap */
+    header h1 {
+        font-size: 1.6rem;
+        padding: 0 10px;
+    }
+
+    /* Make sure the profile pic stays a good size on small screens */
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+    }
+}
 
        /* 3. Turn the Grid into a single column */
        .projects-grid {
