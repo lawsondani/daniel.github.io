@@ -77,16 +77,40 @@
         }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- MOBILE RESPONSIVENESS FIX --- */
-       @media (max-width: 768px) {
-       /* Instead of display: none, we make them stack */
-       .nav-links {
-        display: flex;
-        flex-direction: row; /* Stacks links horizontally */
+        @media (max-width: 768px) {
+    /* 1. Make the nav container stack so the logo is on top and links are below */
+    nav .container {
+        flex-direction: column;
         align-items: center;
         gap: 10px;
-        padding: 10px 0;
-      }
+    }
+
+    /* 2. Give the links full width and allow them to scroll horizontally */
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        width: 100vw; /* Takes full width of the phone screen */
+        justify-content: flex-start;
+        padding: 10px 20px;
+        gap: 20px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 3. Stop the links from shrinking or wrapping */
+    .nav-links a {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        font-size: 14px; /* Slightly smaller for mobile */
+    }
+
+    /* 4. Hide the scrollbar for a clean look */
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+}
+      
 
     /* Make the Projects grid a single column so cards aren't squashed */
        .projects-grid {
@@ -106,7 +130,12 @@
         height: 180px;
        }
     }
-
+         .tech-stack-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center; /* This centers them on the phone screen */     
+     }
         /* --- CV BUTTON STYLE --- */
        .cv-nav-btn {
             background-color: var(--accent);
