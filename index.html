@@ -167,6 +167,36 @@
            letter-spacing: 2px; box-shadow: 0 0 20px var(--accent);
         }
 
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+        /* 1. Stack the Navigation vertically */
+       .nav-links {
+        display: none; /* Usually, pros use a 'Hamburger Menu' here, but for now, we can simplify */
+        }
+
+        /* 2. Make the Profile Picture smaller for mobile */
+        .profile-pic {
+        width: 150px;
+        height: 150px;
+        }
+
+       /* 3. Turn the Grid into a single column */
+       .projects-grid {
+        grid-template-columns: 1fr; /* Cards will now sit on top of each other */
+        padding: 10px;
+        }
+
+         /* 4. Adjust font sizes so text isn't too big */
+        h1 {
+        font-size: 2rem;
+        }
+
+        section {
+        padding: 20px;
+        margin: 10px;
+        }
+        }
+
         /* --- SKILLS --- */
         .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
         .skill-tag {
