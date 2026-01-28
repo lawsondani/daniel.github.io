@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Connected & Interactive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #888888;
+            --accent: #00ff88; /* Cyber Green */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+    /* This creates the animated gradient colors */
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0d2a1f, #000000);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+    /* The magic that moves the background */
+        @keyframes gradientFlow {
+            0% {
+            background-position: 0% 50%;
+        }
+            50% {
+            background-position: 100% 50%;
+        }
+            100% {
+            background-position: 0% 50%;
+        }
+        }
+
+    /* Optional: Add a glass effect to your sections to see the movement behind them */
+        section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+        .nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- CV BUTTON STYLE --- */
+       .cv-nav-btn {
+            background-color: var(--accent);
+            color: #000 !important; 
+            padding: 6px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px; /* Space between the icon and text */
+            transition: 0.3s;
+        }
+
+       .cv-nav-btn:hover {
+            box-shadow: 0 0 15px var(--accent);
+            transform: translateY(-2px);
+            background-color: #ffffff; /* Turns white on hover for an interactive feel */
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        @keyframes slowSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+        }
+
+        .profile-pic {
+            width: 250px; 
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            padding: 5px;
+            background-color: #000;
+            margin-bottom: 30px;
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .profile-pic:hover { 
+            transform: rotate(7deg) scale(1.1); 
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+        }
+
+        h1 { font-size: 3.5rem; margin: 20px auto 10px auto; max-width: 800px; line-height: 1.1; text-transform: uppercase; letter-spacing: -1px; }
+        .accent-text { color: var(--accent); }
+
+        /* Typewriter Effect */
+        .typewriter {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 1.5rem;
+            min-height: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .social-links { display: flex; gap: 25px; margin-top: 20px; }
+        .social-icon {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-icon:hover { color: var(--accent); transform: translateY(-5px); }
+
+        /* --- SECTIONS --- */
+        .section-title { font-size: 2rem; margin-top: 100px; border-left: 4px solid var(--accent); padding-left: 15px; }
+
+        .about-box {
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+        .about-box:hover {  
+           letter-spacing: 2px; box-shadow: 0 0 20px var(--accent);
+        }
+
+        /* --- SKILLS --- */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .skill-tag {
+            background: #1a1a1a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .skill-tag:hover { background: var(--accent); color: #000; font-weight: bold; }
+
+        /* --- PROJECTS GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #222;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+
+        /* --- FOOTER & CONTACT --- */
+        footer { padding: 100px 0; text-align: center; }
+        .contact-info { margin: 30px 0; color: var(--text-dim); }
+        .contact-info p { margin: 10px 0; }
+        .contact-info i { color: var(--accent); margin-right: 10px; }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { letter-spacing: 2px; box-shadow: 0 0 20px var(--accent); }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <div style="font-weight: bold; color: var(--accent); letter-spacing: 1px;">MY PORTFOLIO</div>
+            <div class="nav-links">
+                <a href="#Experiences">Experiences</a>
+                <a href="#projects">Projects</a>
+                <a href="#References">References</a>
+                <a href="/home/lawson/Downloads/CV Professionnel Minimaliste Beige.pdf" download class="Curriculum-Vitae-nav-btn"><i class="fas fa-download"></i> Curriculum-Vitae</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <img src="/home/lawson/Downloads/Gemini_Generated_Image_4j7xl54j7xl54j7x.png" alt="Profile" class="profile-pic reveal">
+            <h1 class="reveal">OLLOMO ABAGHA DANIEL MELVYNE ROD</h1>
+            <div class="typewriter" id="typewriter"></div>
+            
+            <div class="social-links reveal">
+                <a href="https://github.com/lawsondani" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/daniel-ollomo-bb2442314" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+1234567890" class="social-icon"><i class="fas fa-phone"></i></a>
+            </div>
+        </header>
+
+        <section id="about" class="reveal">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-box">
+                <p>Hello! I am a passionate developer with a knack for building clean, functional, and user-centered digital experiences. I specialize in turning complex problems into simple, beautiful code.</p>
+                <p>I focus on performance, accessibility, and writing code that scales. When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.</p>
+                
+                <h3 style="color: var(--accent); margin-top: 30px;">My Tech Stack</h3>
+                <p>Interactive data visualization for AI training models.</p>
+                <a href="#" style="color: var(--accent); text-decoration: none; font-weight: bold;">View Repo →</a>
+                <div class="skills-container">
+                    <span class="skill-tag">C language</span>
+                    <span class="skill-tag">Html/Css</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Cisco</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <p>Interactive data visualization for AI training models.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: bold;">View Repo →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title reveal">Featured Projects</h2>
+            <div class="grid">
+                <div class="card reveal">
+                    <h3>01. Neural Network Dashboard</h3>
+                    <p>Interactive data visualization for AI training models.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: bold;">View Repo →</a>
+                </div>
+                <div class="card reveal">
+                    <h3>02. Cloud Infrastructure</h3>
+                    <p>Auto-scaling architecture for high-traffic SaaS products.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: bold;">View Repo →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="reveal">
+            <h2 class="section-title" style="border: none; text-align: center;">Get In Touch & And Let's Build The Future</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> Rodheslawson@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +250 791 430 380</p>
+                <p><i class="fas fa-map-marker-alt"></i> kigali, Rwanda</p>
+            </div>
+            <a href="mailto:rodheslawson@gmail.com" class="btn">Start a Conversation</a>
+            <p style="margin-top: 60px; font-size: 0.8rem; color: var(--text-dim);">© 2024 . Lawson . All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- TYPEWRITER EFFECT ---
+        const textElement = document.getElementById('typewriter');
+        const phrases = ["Full-Stack Developer.",];
+        let i = 0; let j = 0; let currentPhrase = []; let isDeleting = false;
+
+        function loop() {
+            textElement.innerHTML = currentPhrase.join('');
+            if (i < phrases.length) {
+                if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]); j++;
+                }
+                if (isDeleting && j <= phrases[i].length) {
+                    currentPhrase.pop(); j--;
+                }
+                if (j == phrases[i].length) { isDeleting = true; }
+                if (isDeleting && j == 0) {
+                    currentPhrase = []; isDeleting = false; i++;
+                    if (i == phrases.length) i = 0;
+                }
+            }
+            setTimeout(loop, isDeleting ? 50 : 150);
+        }
+        loop();
+
+        // --- REVEAL ON SCROLL ---
+        // --- REVEAL EVERY TIME ON SCROLL ---
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Adds the class when it enters the screen
+            entry.target.classList.add('active');
+        } else {
+            // Removes the class when it leaves the screen
+            entry.target.classList.remove('active');
+        }
+    });
+}, { 
+    threshold: 0.1 // Triggers when 10% of the element is visible
+});
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 80 },
+      "color": { "value": "#00ff88" }, /* Matches your green accent */
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.2 },
+      "size": { "value": 3 },
+      "line_linked": { "enable": true, "distance": 150, "color": "#00ff88", "opacity": 0.1, "width": 1 },
+      "move": { "enable": true, "speed": 2 }
+    },
+    "interactivity": {
+      "events": { "onhover": { "enable": true, "mode": "repulse" } }
+    }
+  });
+</script>
+
+</body>
+</html>
