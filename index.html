@@ -208,6 +208,29 @@
     }
 }
 
+        /* --- MOBILE HORIZONTAL NAV ONLY --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important; /* Forces side-by-side */
+        flex-wrap: nowrap !important;   /* Prevents jumping to the next line */
+        overflow-x: auto !important;    /* Allows sliding/scrolling */
+        gap: 20px;                      /* Space between links */
+        padding: 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth swipe on mobile */
+    }
+
+    /* Keeps buttons from getting squished */
+    .nav-links a, .cv-nav-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* Hides the scrollbar for a cleaner look */
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+}
        /* Change your Projects grid from 3 columns to 1 column */
        .projects-grid {
         grid-template-columns: 1fr !important;
@@ -234,22 +257,6 @@
         gap: 10px;
        }
 
-        /* --- MOBILE RESPONSIVENESS FIX --- */
-        @media (max-width: 768px) {
-        /* Instead of display: none, we make them stack */
-        .nav-links {
-        display: flex;
-        flex-direction: column; /* Stacks links vertically */
-        align-items: center;
-        gap: 15px;
-        padding: 20px 0;
-        }
-
-    /* Make the Projects grid a single column so cards aren't squashed */
-    .projects-grid {
-        grid-template-columns: 1fr !important;
-        padding: 10px;
-    }
 
     /* Adjust the header text so it doesn't overlap */
     header h1 {
