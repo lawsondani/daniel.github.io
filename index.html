@@ -113,13 +113,24 @@
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
-        gap: 8px !important;
+        
+        /* INCREASED SPACE: 15px is usually the 'sweet spot' for mobile */
+        gap: 15px !important; 
+        
+        align-items: center !important;
     }
 
+    /* Styling the individual tags for better spacing */
     .tech-tags .tag {
         flex-shrink: 0 !important;
-        font-size: 11px !important;
-        padding: 4px 8px !important;
+        padding: 6px 12px !important; /* Adds more space inside the tag */
+        font-size: 12px !important;
+        letter-spacing: 0.5px; /* Spreads the letters slightly for readability */
+    }
+    
+    /* Ensure the space between the View Repo button and the first tag is also larger */
+    .project-actions {
+        gap: 20px !important; 
     }
             
 }
@@ -291,7 +302,8 @@
         .card:hover {
             transform: translateY(-10px);
             border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1); 
+           letter-spacing: 2px; box-shadow: 0 0 20px var(--accent);
         }
 
   
@@ -323,10 +335,7 @@
     }
 
     /* Make sure the profile pic stays a good size on small screens */
-    .profile-pic {
-        width: 180px;
-        height: 180px;
-    }
+   
 }
 
        /* 3. Turn the Grid into a single column */
