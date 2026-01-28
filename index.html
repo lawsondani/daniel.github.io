@@ -172,16 +172,22 @@
         /* Stack your navigation links vertically */
         .nav-links {
         display: flex; /* Usually, you'd switch to a 'Hamburger Menu' here */
+         flex-direction: column; /* Stacks links vertically */
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0; 
        }
 
        /* Change your Projects grid from 3 columns to 1 column */
        .projects-grid {
         grid-template-columns: 1fr !important;
+        padding: 10px;   
        }
   
        /* Make text slightly smaller so it doesn't wrap weirdly */
        h1 {
         font-size: 2rem;
+        padding: 0 10px;  
        }
 
        /* Center your profile info for a better mobile look */
